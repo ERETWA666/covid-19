@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitalálós Játék AI-val</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        #game-container {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Kitalálós Játék AI-val!</h1>
+        <p>Próbáld meg kitalálni a számot, amit az AI választott (1 és 100 között).</p>
+        <input type="number" id="user-guess" placeholder="Tippelj egy számra..." />
+        <button onclick="checkGuess()">Küldés</button>
+        <p id="response" class="message"></p>
+    </div>
+
+    <script>
+        // Az AI választott szám
+        const aiNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById("user-guess").value;
+            const responseElement = document.getElementById("response");
+
+            if (userGuess < 1 || userGuess > 100) {
+                responseElement.textContent = "A számnak 1 és 100 között kell lennie!";
+                responseElement.style.color = "red";
+                return;
+            }
+
+            attempts++;
+            
+            if (userGuess < aiNumber) {
+                responseElement.textContent = "Melegebb! Próbálj nagyobb számot.";
+                responseElement.style.color = "blue";
+            } else if (userGuess > aiNumber) {
+                responseElement.textContent = "Hidegebb! Próbálj kisebb számot.";
+                responseElement.style.color = "blue";
+            } else {
+                responseElement.textContent = `Gratulálok! Eltaláltad a számot ${aiNumber} ${attempts} próbálkozásból!`;
+                responseElement.style.color = "green";
+            }
+        }
+    </script>
+
+</body>
+</html>
