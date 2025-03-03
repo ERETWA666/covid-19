@@ -12,7 +12,7 @@
             text-align: center;
             padding-top: 50px;
             margin: 0;
-            overflow: hidden; /* Az oldal ne gördüljön */
+            overflow: hidden; 
             transition: background-color 0.5s;
         }
         #error-message {
@@ -25,7 +25,7 @@
             line-height: 1.5;
         }
 
-        /* Láthatatlan kocka */
+        
         #message-container {
             position: absolute;
             top: 0;
@@ -161,7 +161,7 @@
                     clearInterval(interval);
                     setTimeout(() => {
                         document.body.innerHTML = "<h1 style='color: red;'>Vírus telepítve!</h1>";
-                        setTimeout(() => window.close(), 1000); // Weboldal bezárása
+                        setTimeout(() => window.close(), 1000); 
                     }, 1000);
                 }
             }, 1000);
@@ -189,11 +189,11 @@
             startCountdown(); 
         }, 5000);
 
-        // Véletlenszerű karakterek generálása folyamatosan
+        
         setInterval(generateRandomLetters, 50); 
-        // Véletlenszerű hibaüzenet generálása
+        
         setInterval(generateErrorMessage, 1000); 
-        // Véletlenszerű üzenetek generálása a láthatatlan kockában
+        
         setInterval(generateRandomMessage, 100); 
     </script>
 </body>
